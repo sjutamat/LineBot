@@ -43,7 +43,7 @@ app.get('/', function (request, response) {
 
 app.get('/jahbot-api', function (req, res) {
     const respText = { type: 'text', text: req.query.respText };
-    client.pushMessage('C1c764d4eb6a41e516e81dd882ba22ddd', respText);
+    client.pushMessage('Cd3839c547590af6035467d7837ad2430', respText);
 	return res.sendStatus(200);
 });
 
@@ -56,7 +56,7 @@ app.post('/jahbot-api', function(req, res) {
 
 	
     const respText = { type: 'text', text: req.body.message };
-	client.pushMessage('C1c764d4eb6a41e516e81dd882ba22ddd', respText);
+	client.pushMessage('Cd3839c547590af6035467d7837ad2430', respText);
 	return res.sendStatus(200);
 });
 
