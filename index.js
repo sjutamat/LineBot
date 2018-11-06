@@ -48,17 +48,34 @@ app.get('/jahbot-api', function (req, res) {
 });
 
 app.post('/jahbot-api', function(req, res) {
-	//log line messages
-	//console.log(req.body);
-    //console.log(req.body.id);
-    //console.log(req.body.system);
-    //console.log(req.body.message);
 
 	
-    const respText = { type: 'text', text: req.body.message };
+const respText = { type: 'text', text: req.body.message };
 	client.pushMessage('Cd3839c547590af6035467d7837ad2430', respText);
 	return res.sendStatus(200);
 });
+
+//Line push notification module
+app.get('/talumtumpo', function (req, res) {
+    const respText = { type: 'text', text: req.query.respText };
+    client.pushMessage('Cb1ec53d262112793acea6d15f3ba51b4', respText).catch(function(error) {
+  console.log(error);
+  return res.sendStatus(503);
+	}).then(function(value) {
+    return res.sendStatus(200);
+	});
+});
+app.post('/talumtumpo', function(req, res) {
+    const respText = { type: 'text', text: req.body.message };
+    client.pushMessage('Cb1ec53d262112793acea6d15f3ba51b4', respText).catch(function(error) {
+  console.log(error);
+  return res.sendStatus(503);
+	}).then(function(value) {
+    return res.sendStatus(200);
+	});
+});
+//End of module
+
 
 // event handler
 function handleEvent(event) {
